@@ -1,1 +1,3 @@
-# Hello World
+# Hi!
+
+This blog is currently under construction
