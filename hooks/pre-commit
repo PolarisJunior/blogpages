@@ -2,20 +2,52 @@
 
 echo "Running pre-commit hook"
 
-PAGE_LISTING=pages/page-listing
+PAGE_LISTING=pages/page-listing.json
 
 # Clear the page listing
 > ${PAGE_LISTING}
 
+# Append a line to the page listing
+function emit {
+    echo $1 >> ${PAGE_LISTING}
+}
+
+function start_array {
+    emit "["
+}
+
+function end_array {
+    emit "]"
+}
+
+function start_object {
+    emit "{"
+}
+
+function end_object {
+    emit "}"
+}
+
+start_array
+i=0
 for filename in pages/markdown/**/*.md; do
     [ -e "$filename" ] || continue
+    if [ $i -gt 0 ]
+    then
+        emit ","
+    fi
+    start_object
     echo "Indexing page $path"
-    sed -r -n -e 's/\$summary\s*=\s*(.+)/&/p' -e 's/\$title\s*=\s*(.+)/&/p' \
-    -e 's/\$date\s*=\s*(.*)/&/p' ${filename} >> ${PAGE_LISTING}
-    echo "\$path=$filename" >> ${PAGE_LISTING}
-    # New line for clarity
-    echo >> ${PAGE_LISTING}
+    sed -r -n -e 's/(\$summary)\s*=\s*(.+)/"\1":"\2",/p' \
+    -e 's/(\$title)\s*=\s*(.+)/"\1":"\2",/p' \
+    -e 's/(\$date)\s*=\s*(.*)/"\1":"\2",/p' ${filename} >> ${PAGE_LISTING}
+    emit "\"\$path\":\"$filename\""
+    end_object
+
+    i=$((i+1))
 done
+
+end_array
 
 git add $PAGE_LISTING
 exit $?
