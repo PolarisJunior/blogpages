@@ -14,10 +14,8 @@ for filename in pages/markdown/**/*.md; do
     -e 's/\$date\s*=\s*(.*)/&/p' ${filename} >> ${PAGE_LISTING}
     echo "\$path=$filename" >> ${PAGE_LISTING}
     # New line for clarity
-    echo "" >> ${PAGE_LISTING}
+    echo >> ${PAGE_LISTING}
 done
 
 git add $PAGE_LISTING
 exit $?
-
-
