@@ -1,6 +1,6 @@
 $title=Lorem Ipsum
 $summary=Lorem ipsum is placeholder text
-$date=10/24/20
+$date=10/23/20
 
 # Exspectant Aphareia fideque regis pavet qua quibus
 

@@ -1,3 +1,12 @@
 $title=Lorem Ipsum
 $summary=Lorem ipsum is placeholder text
+$date=10/23/20
+$path=pages/markdown/examples/lorem_ipsum.md
+$title=Lorem Pipsum
+$summary=My second blog post
 $date=10/24/20
+$path=pages/markdown/examples/lorem_pipsum.md
+$title=Third page
+$summary=Summary
+$date=10/25/20
+$path=pages/markdown/examples/third_page.md

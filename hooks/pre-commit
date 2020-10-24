@@ -9,9 +9,10 @@ PAGE_LISTING=pages/page-listing
 
 for filename in pages/markdown/**/*.md; do
     [ -e "$filename" ] || continue
+    echo "Indexing page $path"
     sed -r -n -e 's/\$summary\s*=\s*(.+)/&/p' -e 's/\$title\s*=\s*(.+)/&/p' \
     -e 's/\$date\s*=\s*(.*)/&/p' ${filename} >> ${PAGE_LISTING}
-    "\$path=$filename" >> ${PAGE_LISTING}
+    echo "\$path=$filename" >> ${PAGE_LISTING}
 done
 
 git add $PAGE_LISTING
