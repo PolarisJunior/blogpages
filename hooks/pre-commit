@@ -38,9 +38,9 @@ for filename in pages/markdown/**/*.md; do
     fi
     start_object
     echo "Indexing page $path"
-    sed -r -n -e 's/(\$summary)\s*=\s*(.+)/"\1":"\2",/p' \
-    -e 's/(\$title)\s*=\s*(.+)/"\1":"\2",/p' \
-    -e 's/(\$date)\s*=\s*(.*)/"\1":"\2",/p' ${filename} >> ${PAGE_LISTING}
+    sed -r -n -e 's/^\s*(\$summary)\s*=\s*(.+)/"\1":"\2",/p' \
+    -e 's/^\s*(\$title)\s*=\s*(.*)/"\1":"\2",/p' \
+    -e 's/^\s*(\$date)\s*=\s*(.*)/"\1":"\2",/p' ${filename} >> ${PAGE_LISTING}
     emit "\"\$path\":\"$filename\""
     end_object
 
