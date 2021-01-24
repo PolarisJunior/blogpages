@@ -30,7 +30,8 @@ function end_object {
 
 start_array
 i=0
-for filename in pages/markdown/**/*.md; do
+# TODO this loop needs to recursively iterate through all files in the tree
+for filename in pages/**/*.md; do
     [ -e "$filename" ] || continue
     if [ $i -gt 0 ]
     then
@@ -38,6 +39,7 @@ for filename in pages/markdown/**/*.md; do
     fi
     start_object
     echo "Indexing page $path"
+    # TODO this script should add all metadata fields available, instead of hardcoding each field
     sed -r -n -e 's/^\s*(\$summary)\s*=\s*(.+)/"\1":"\2",/p' \
     -e 's/^\s*(\$title)\s*=\s*(.*)/"\1":"\2",/p' \
     -e 's/^\s*(\$date)\s*=\s*(.*)/"\1":"\2",/p' ${filename} >> ${PAGE_LISTING}
