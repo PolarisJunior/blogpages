@@ -1,0 +1,55 @@
+#!/bin/bash
+
+echo "Running pre-commit hook"
+
+PAGE_LISTING=pages/page-listing.json
+
+# Clear the page listing
+> ${PAGE_LISTING}
+
+# Append a line to the page listing
+function emit {
+    echo $1 >> ${PAGE_LISTING}
+}
+
+function start_array {
+    emit "["
+}
+
+function end_array {
+    emit "]"
+}
+
+function start_object {
+    emit "{"
+}
+
+function end_object {
+    emit "}"
+}
+
+start_array
+i=0
+# TODO this loop needs to recursively iterate through all files in the tree
+for filename in pages/**/*.md; do
+    [ -e "$filename" ] || continue
+    if [ $i -gt 0 ]
+    then
+        emit ","
+    fi
+    start_object
+    echo "Indexing page $path"
+    # TODO this script should add all metadata fields available, instead of hardcoding each field
+    sed -r -n -e 's/^\s*(\$summary)\s*=\s*(.+)/"\1":"\2",/p' \
+    -e 's/^\s*(\$title)\s*=\s*(.*)/"\1":"\2",/p' \
+    -e 's/^\s*(\$date)\s*=\s*(.*)/"\1":"\2",/p' ${filename} >> ${PAGE_LISTING}
+    emit "\"\$path\":\"$filename\""
+    end_object
+
+    i=$((i+1))
+done
+
+end_array
+
+git add $PAGE_LISTING
+exit $?
