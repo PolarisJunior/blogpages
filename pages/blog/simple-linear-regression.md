@@ -1,3 +1,8 @@
+$title = Simple Linear Regression
+$summary = An introduction to modelling linear relationships using simple linear regression.
+$date = 1/24/2021
+---
+
 # Simple Linear Regression
 
 Linear regression is a model for predicting the value of a dependent variable `y`, given the value of an independent variable `x`. Being a **linear** model, linear regression works best when the relationship between `x` and `y` is linear. 

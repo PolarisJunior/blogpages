@@ -7,6 +7,9 @@
 }
 ,
 {
+"$title":"Simple Linear Regression",
+"$summary":"An introduction to modelling linear relationships using simple linear regression.",
+"$date":"1/24/2021",
 "$path":"pages/blog/simple-linear-regression.md"
 }
 ]
