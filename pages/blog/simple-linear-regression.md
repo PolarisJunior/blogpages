@@ -11,7 +11,7 @@ Linear regression is a model for predicting the value of a dependent variable `y
 
 Recall the basic equation for a straight line where all values are scalar:
 
-    \(y = mx + b\)
+\\(y = mx + b\\)
 
 `y` is the dependent variable, also known as the response. It is the value we are trying to predict. 
 
@@ -25,10 +25,10 @@ Recall the basic equation for a straight line where all values are scalar:
 
 $ax^2 + bx + c = 0$
 
-    \(a \neq 0\)
+\\(a \neq 0\\)
 
-When ```\(a \neq 0\)```, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]    
+When \\(a \neq 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
+\\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\\]    
 
 Now that we have this basic formula 
     
