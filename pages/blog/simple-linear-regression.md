@@ -21,7 +21,7 @@ Recall the basic equation for a 2-dimensional line:
 
 `b` is the constant term, it is used to offset the value of `y` predicted. 
 
-##
+## Example and example of multiple variables
 
 \\[y = m_1x_1 + m_2x_2 + b \\]
 
