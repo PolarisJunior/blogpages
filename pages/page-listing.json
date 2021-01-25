@@ -5,4 +5,8 @@
 "$date":"1/24/2021",
 "$path":"pages/blog/first.md"
 }
+,
+{
+"$path":"pages/blog/simple-linear-regression.md"
+}
 ]
